@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+20.times do 
+    Tenant.create(email: Faker::Internet.email)
+    Studio.create(name: Faker::Address.street_name, price: Faker::Number.decimal)
+    Stay.create(checkin_date: Faker::Date.backward, checkout_date: Faker::Date.forward, tenant_id: Faker::Number.between(Tenant.first.id, Tenant.last.id), studio_id: Faker::Number.between(Studio.first.id, Studio.last.id))
+end 
