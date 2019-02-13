@@ -11,5 +11,5 @@ require 'faker'
 20.times do 
     Tenant.create(email: Faker::Internet.email)
     Studio.create(name: Faker::Address.street_name, price: Faker::Number.decimal)
-    Stay.create(checkin_date: Faker::Date.backward, checkout_date: Faker::Date.forward, tenant_id: Faker::Number.between(Tenant.first.id, Tenant.last.id), studio_id: Faker::Number.between(Studio.first.id, Studio.last.id))
+    Stay.create(checkin_date: Faker::Date.backward, checkout_date: Faker::Date.forward, tenant_id: Faker::Number.positive(Tenant.first.id, Tenant.last.id), studio_id: Faker::Number.positive(Studio.first.id, Studio.last.id))
 end 

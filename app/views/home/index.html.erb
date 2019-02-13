@@ -1,0 +1,17 @@
+<% @tenants.each do |tenant| %>
+    <%= tenant.id %> 
+    <%= tenant.email %>
+        <% tenant.stays.each do |stay| %> 
+            <%= stay.checkin_date %>
+            <%= stay.checkout_date %>
+
+            Checkin-date :<%= stay.checkin_date.to_date %>
+            Checkin-date :<%= stay.checkin_date.to_date.at_beginning_of_month%>
+            Mois Actuel: <%= Date.today.strftime("%B") %>         
+            <%= stay.studio.name %>
+            <%= stay.studio.price %>$<br>
+        <% end %>
+<% end%> 
+
+
+
